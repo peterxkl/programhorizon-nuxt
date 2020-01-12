@@ -19,9 +19,9 @@
                 <span class="btn-search fa fa-search"></span>
               </form>
               <div class="sui-nav pull-right info" v-if="user.name !== undefined">
-                <li><a href="~/assets/other-notice.html" target="_blank" class="notice">{{user.name}}</a></li>
+                <li><a href="/manager" target="_blank" class="notice">{{user.name}}</a></li>
                 <li><a @click="logout">退出登录</a></li>
-                <li><a href="~/assets/person-homepage.html" target="_blank" class="homego"><img :src="user.avatar" alt="用户头像" /></a></li>
+                <li><a href="/manager" target="_blank" class="homego"><img :src="user.avatar" alt="用户头像" /></a></li>
               </div>
               <div class="sui-nav pull-right info" v-if="user.name === undefined">
                 <router-link to="/login">登录</router-link>
