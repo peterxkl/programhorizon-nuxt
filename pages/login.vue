@@ -48,18 +48,18 @@
           <div class="control-group">
             <label for="inputname" class="control-label">手机号：</label>
             <div class="controls">
-              <input type="text" id="inputname" placeholder="11位手机号" class="input-xlarge" data-rules="required" />
+              <input type="text" id="inputname" v-model="mobile" placeholder="11位手机号" class="input-xlarge" data-rules="required" />
             </div>
           </div>
           <div class="control-group">
             <label for="inputpassword" class="control-label">密码：</label>
             <div class="controls">
-              <input type="text" id="inputpassword" placeholder="输入登录密码" class="input-xlarge" />
+              <input type="text" id="inputpassword" v-model="password" placeholder="输入登录密码" class="input-xlarge" />
             </div>
           </div>
           <div class="controls">
             <label> <input type="checkbox" name="remember-me" /><span class="type-text" style="font-size:12px;">记住登录状态</span> </label>
-            <button type="button" class="sui-btn btn-danger btn-yes">登 录</button>
+            <button type="button" @click="login" class="sui-btn btn-danger btn-yes">登 录</button>
           </div>
           <div class="other-methods">
           </div>
@@ -72,11 +72,15 @@
 <script>
   import '~/assets/css/page-sj-person-loginsign.css'
   import userApi from '@/api/user'
+  import {setUser} from "../utils/auth";
+
   export default {
     data() {
       return {
         pojo: {},
-        code: ''
+        code: '',
+        mobile: '',
+        password: ''
       }
     },
     methods: {
@@ -101,6 +105,21 @@
               message: '注册出错',
               type: 'error'
             })
+          }
+        })
+      },
+      login() {
+        return userApi.login().then(res => {
+          if (res.data.flag) {
+            setUser(res.data.data.token, res.data.data.name, res.data.data.avatar)  //保存用户登录信息
+            location.href='/manager'
+          } else {
+            this.$message({
+              message: res.data.message,
+              type: 'error'
+            })
+            this.mobile = ''
+            this.password = ''
           }
         })
       }
