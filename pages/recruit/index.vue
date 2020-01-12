@@ -12,7 +12,7 @@
             <ul class="yui3-g job-list" style="display:block;">
               <li class="yui3-u-1-2 job-item" v-for="(item,index) in recommendItems" :key="index">
                 <p>
-                  <span class="name"><a href="~/assets/recruit-detail.html" target="_blank">{{item.jobName}}</a></span>
+                  <span class="name"><a :href="'/recruit/item/'+item.id" target="_blank">{{item.jobName}}</a></span>
                   <span class="city"><i class="fa fa-map-marker"></i> {{item.address}}</span></p> <p class="need">
                   <span class="money">{{item.salary}}</span>/{{item.conditon1}}/{{item.education}}/{{item.type}}</p> <p>
                   <span class="company">{{item.eid}} &middot; {{item.createDate}}</span>
@@ -29,7 +29,7 @@
             <ul class="yui3-g job-list" style="display:block;">
               <li class="yui3-u-1-2 job-item" v-for="(item,index) in newListItems" :key="index">
                 <p>
-                  <span class="name"> <a href="~/assets/recruit-jobDetail.html" target="_blank"></a></span>
+                  <span class="name"> <a :href="'/recruit/item/'+item.id" target="_blank"></a></span>
                   <span class="city"><i class="fa fa-map-marker"></i> {{item.address}}</span></p> <p class="need">
                   <span class="money">{{item.salary}}</span>/{{item.conditon1}}/{{item.education}}/{{item.type}}</p> <p>
                   <span class="company">{{item.eid}} &middot; {{item.createDate}}</span>
