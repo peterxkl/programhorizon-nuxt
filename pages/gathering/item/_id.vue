@@ -1,9 +1,9 @@
 <template>
   <div class="wrapper activities">
-    <h1>{{item.id}}</h1>
+    <h1>{{item.name}}</h1>
     <div class="img-text">
       <div class="left-img">
-        <img src="~/assets/img/widget-acti.png" alt="" />
+        <img :src="'~/assets/img/'+item.image" alt="" />
       </div>
       <div class="right-txt">
         <p>开始时间： {{item.startTime}}</p>
@@ -59,7 +59,7 @@
           <div class="tit">
             <span>分享扩散</span>
           </div>
-          <div class="social-share" data-sites="weibo,wechat" data-url="http://baidu.com" :data-title="item.name">
+          <div class="social-share" data-sites="weibo" data-url="http://baidu.com" :data-title="item.name">
           </div>
         </div>
       </div>
@@ -69,6 +69,7 @@
 
 <script>
   import gatheringApi from '@/api/gathering'
+  import '~/assets/css/page-sj-activity-detail.css'
   export default {
     asyncData({params}) {
       return gatheringApi.findById(params.id).then(res => {
@@ -76,7 +77,7 @@
       })
     },
     head: {
-      scrtpt: [
+      script: [
         {src: 'https://cdn.bootcss.com/social-share.js/1.0.16/js/social-share.min.js'}
       ],
       link: [
