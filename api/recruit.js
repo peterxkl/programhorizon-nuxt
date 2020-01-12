@@ -1,42 +1,43 @@
 import request from '@/utils/request'
+const apiGateWay = 'recruit'
 const group_name = 'recruit'
 const api_name = 'recruit'
 export default {
   getList() {
     return request({
-      url: `/${group_name}/${api_name}/${api_name}`,
+      url: `/${apiGateWay}/${api_name}/${api_name}`,
       method: 'get'
     })
   },
   search(page, size, searchMap) {
     return request({
-      url: `/${group_name}/${api_name}/${api_name}/search/${page}/${size}`,
+      url: `/${apiGateWay}/${api_name}/${api_name}/search/${page}/${size}`,
       method: 'post',
       data: searchMap
     })
   },
   searchRecommend() {
     return request({
-      url: `/${group_name}/${api_name}/${api_name}/search/recommend`,
+      url: `/${apiGateWay}/${group_name}/${api_name}/search/recommend`,
       method: 'get'
     })
   },
   searchNewList() {
     return request({
-      url: `/${group_name}/${api_name}/${api_name}/search/newList`,
+      url: `/${apiGateWay}/${group_name}/${api_name}/search/newList`,
       method: 'get'
     })
   },
   save(pojo) {
     return request({
-      url: `/${group_name}/${api_name}/${api_name}`,
+      url: `/${apiGateWay}/${api_name}/${api_name}`,
       method: 'post',
       data: pojo
     })
   },
   findById(id) {
     return request({
-      url: `/${group_name}/${api_name}/${api_name}/${id}`,
+      url: `/${apiGateWay}/${api_name}/${api_name}/${id}`,
       method: 'get'
     })
   },
@@ -45,14 +46,14 @@ export default {
       return this.save(pojo)
     }
     return request({
-      url: `/${group_name}/${api_name}/${api_name}/${id}`,
+      url: `/${apiGateWay}/${api_name}/${api_name}/${id}`,
       method: 'put',
       data: pojo
     })
   },
   deleteById(id) {
     return request({
-      url: `/${group_name}/${api_name}/${api_name}/${id}`,
+      url: `/${apiGateWay}/${api_name}/${api_name}/${id}`,
       method: 'delete'
     })
   }

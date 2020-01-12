@@ -2,7 +2,7 @@
   <div class="wrapper tag-item">
     <div class="job-intro">
       <div class="left-img">
-        <img src="./img/widget-company.png" alt="" />
+        <img src="~/assets/img/widget-company.png" alt="" />
       </div>
       <div class="middle-intro">
         <div class="name">
@@ -45,7 +45,7 @@
     <div class="fl right-tag">
       <div class="company-job">
         <div class="intro">
-          <img src="./img/widget-company.png" alt="" />
+          <img src="~/assets/img/widget-company.png" alt="" />
           <div class="title">
             {{enterprise_item.name}}
           </div>
@@ -59,8 +59,8 @@
           </li>
         </div>
         <div class="btns">
-          <a class="sui-btn btn-home" href="./recruit-company.html" target="_blank">企业主页</a>
-          <a class="sui-btn btn-position" href="./recruit-job.html" target="_blank">{{enterprise_item.jobCount}}个职位</a>
+          <a class="sui-btn btn-home" href="~/assets/recruit-company.html" target="_blank">企业主页</a>
+          <a class="sui-btn btn-position" href="~/assets/recruit-job.html" target="_blank">{{enterprise_item.jobCount}}个职位</a>
         </div>
       </div>
     </div>
@@ -71,7 +71,7 @@
   import recruitApi from '@/api/recruit'
   import enterpriseApi from '@/api/enterprise'
   import '~/assets/css/page-sj-recruit-detail.css'
-  import '~/assets/css/page-sj-enterprise-detail.css'
+  import '~/assets/css/page-sj-recruit-company.css'
   export default {
     asyncData({params}) {
       return recruitApi.findById(params.id).then(res => {

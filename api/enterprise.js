@@ -17,7 +17,7 @@ export default {
   },
   searchHotList() {
     return request({
-      url: `/${group_name}/${group_name}/${api_name}/${api_name}/search/hotList`,
+      url: `/${group_name}/${group_name}/${api_name}/search/hotList`,
       method: 'get'
     })
   },

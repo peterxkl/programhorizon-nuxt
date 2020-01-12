@@ -29,7 +29,7 @@
             <ul class="yui3-g job-list" style="display:block;">
               <li class="yui3-u-1-2 job-item" v-for="(item,index) in newListItems" :key="index">
                 <p>
-                  <span class="name"> <a :href="'/recruit/item/'+item.id" target="_blank"></a></span>
+                  <span class="name"> <a :href="'/recruit/item/'+item.id" target="_blank">{{item.jobName}}</a></span>
                   <span class="city"><i class="fa fa-map-marker"></i> {{item.address}}</span></p> <p class="need">
                   <span class="money">{{item.salary}}</span>/{{item.conditon1}}/{{item.education}}/{{item.type}}</p> <p>
                   <span class="company">{{item.eid}} &middot; {{item.createDate}}</span>
@@ -64,10 +64,11 @@
 <script>
   import '~/assets/css/page-sj-recruit-index.css'
   import recruitApi from '@/api/recruit'
-  import enterprise from '@/api/enterprise'
+  import enterpriseApi from '@/api/enterprise'
+  import axios from 'axios'
   export default {
     asyncData() {
-      return axios.all([recruitApi.searchRecommend(),recruitApi.searchNewList(),enterprise.searchHotList()]).then(
+      return axios.all([recruitApi.searchRecommend(),recruitApi.searchNewList(),enterpriseApi.searchHotList()]).then(
         axios.spread(function (recommendList, newList, hotList) {
           return {
             recommendItems: recommendList.data.data,
