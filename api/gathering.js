@@ -4,24 +4,24 @@ const api_name = 'gathering'
 
 export default {
   getList() {
-    return request({ url: `/${api_name}`, method: 'get' })
+    return request({ url: `/${api_name}/${api_name}`, method: 'get' })
   },
   getPageList(page, size) {
-    return request({ url: `/${api_name}/${page}/${size}`, method: 'get' })
+    return request({ url: `/${api_name}/${api_name}/${page}/${size}`, method: 'get' })
   },
   search(page, size, searchMap) {
-    return request({ url: `/${api_name}/search/${page}/${size}`, method: 'post', data: searchMap })
+    return request({ url: `/${api_name}/${api_name}/search/${page}/${size}`, method: 'post', data: searchMap })
   },
   save(pojo) {
-    return request({ url: `/${api_name}`, method: 'post', data: pojo })
+    return request({ url: `/${api_name}/${api_name}`, method: 'post', data: pojo })
   },
   findById(id) {
-    return request({ url: `/${api_name}/${id}`, method: 'get' })
+    return request({ url: `/${api_name}/${api_name}/${id}`, method: 'get' })
   },
   update(id, pojo) {
-    return request({ url: `/${api_name}/${id}`, method: 'put', data: pojo })
+    return request({ url: `/${api_name}/${api_name}/${id}`, method: 'put', data: pojo })
   },
   deleteById(id) {
-    return request({ url: `/${api_name}/${id}`, method: 'delete' })
+    return request({ url: `/${api_name}/${api_name}/${id}`, method: 'delete' })
   }
 }
