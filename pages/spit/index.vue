@@ -3,14 +3,14 @@
     <div class="wrapper tag-item">
       <div class="fl left-list">
         <div class="tc-data-list">
-          <div class="tc-list">
+          <div class="tc-list" v-infinite-scroll="loadMore">
             <ul class="detail-list">
-              <li class="qa-item">
+              <li class="qa-item" v-if="(item, index) in items" :key="index">
                 <div class="fl record">
                   <div class="number">
                     <div class="border useful">
                       <p class="usenum"><a href="#" class="zan"><i class="fa fa-thumbs-up " aria-hidden="true"></i></a></p>
-                      <p class="zannum"> 11 </p>
+                      <p class="zannum"> {{item.thumbup}} </p>
                     </div>
                     <div class="border answer">
                       <a href="#" class="star"><i class="fa fa-star-o" aria-hidden="true"></i></a>
@@ -18,185 +18,10 @@
                   </div>
                 </div>
                 <div class="info">
-                  <p class="text"> <a href="~/assets/spit-detail.html" target="_blank"> 面试说通过了要回去等offer，现在都两周了，还说在ceo审批，两天联系hr一次，都说还在等审批什么情况？工资什么的都谈好了，也要了工资证明。面试说通过了，要回去等offer，现在都两周了还说在ceo审批，两天联系hr一次，都说还在等审批，什么情况？？工资什么的都谈好了，也要了工资证明。也工资证明。 </a> </p>
+                  <p class="text"> <a :href="'/spit/'+item.id" target="_blank"> {{item.content}} </a> </p>
                   <div class="other">
                     <div class="fl date">
-                      <span>2017-7-23 12:02</span>
-                    </div>
-                    <div class="fr remark">
-                      <a href="#" data-toggle="modal" data-target="#shareModal" class="share"><i class="fa fa-share-alt" aria-hidden="true"></i> 分享</a>
-                      <a href="#" data-toggle="modal" data-target="#remarkModal" class="comment"><i class="fa fa-commenting" aria-hidden="true"></i> 回复</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="clearfix"></div> </li>
-              <li class="qa-item">
-                <div class="fl record">
-                  <div class="number">
-                    <div class="border useful">
-                      <p class="usenum"><a href="#" class="zan"><i class="fa fa-thumbs-up " aria-hidden="true"></i></a></p>
-                      <p class="zannum"> 10 </p>
-                    </div>
-                    <div class="border answer">
-                      <a href="#" class="star"><i class="fa fa-star-o" aria-hidden="true"></i></a>
-                    </div>
-                  </div>
-                </div>
-                <div class="info">
-                  <p class="text"> <a href="~/assets/spit-detail.html" target="_blank"> 面试说通过了要回去等offer，现在都两周了，还说在ceo审批，两天联系hr一次，都说还在等审批什么情况？工资什么的都谈好了，也要了工资证明。面试说通过了，要回去等offer，现在都两周了还说在ceo审批，两天联系hr一次，都说还在等审批，什么情况？？工资什么的都谈好了，也要了工资证明。也工资证明。 </a> </p>
-                  <div class="other">
-                    <div class="fl date">
-                      <span>2017-6-22 12:02</span>
-                    </div>
-                    <div class="fr remark">
-                      <a href="#" data-toggle="modal" data-target="#shareModal" class="share"><i class="fa fa-share-alt" aria-hidden="true"></i> 分享</a>
-                      <a href="#" data-toggle="modal" data-target="#remarkModal" class="comment"><i class="fa fa-commenting" aria-hidden="true"></i> 回复</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="clearfix"></div> </li>
-              <li class="qa-item">
-                <div class="fl record">
-                  <div class="number">
-                    <div class="border useful">
-                      <p class="usenum"><a href="#" class="zan"><i class="fa fa-thumbs-up " aria-hidden="true"></i></a></p>
-                      <p class="zannum"> 12 </p>
-                    </div>
-                    <div class="border answer">
-                      <a href="#" class="star"><i class="fa fa-star-o" aria-hidden="true"></i></a>
-                    </div>
-                  </div>
-                </div>
-                <div class="info">
-                  <p class="text"> <a href="~/assets/spit-detail.html" target="_blank"> 面试说通过了要回去等offer，现在都两周了，还说在ceo审批，两天联系hr一次，都说还在等审批什么情况？工资什么的都谈好了，也要了工资证明。面试说通过了，要回去等offer，现在都两周了还说在ceo审批，两天联系hr一次，都说还在等审批，什么情况？？工资什么的都谈好了，也要了工资证明。也工资证明。 </a> </p>
-                  <div class="other">
-                    <div class="fl date">
-                      <span>2017-6-22 12:02</span>
-                    </div>
-                    <div class="fr remark">
-                      <a href="#" data-toggle="modal" data-target="#shareModal" class="share"><i class="fa fa-share-alt" aria-hidden="true"></i> 分享</a>
-                      <a href="#" data-toggle="modal" data-target="#remarkModal" class="comment"><i class="fa fa-commenting" aria-hidden="true"></i> 回复</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="clearfix"></div> </li>
-              <li class="qa-item">
-                <div class="fl record">
-                  <div class="number">
-                    <div class="border useful">
-                      <p class="usenum"><a href="#" class="zan"><i class="fa fa-thumbs-up " aria-hidden="true"></i></a></p>
-                      <p class="zannum"> 10 </p>
-                    </div>
-                    <div class="border answer">
-                      <a href="#" class="star"><i class="fa fa-star-o" aria-hidden="true"></i></a>
-                    </div>
-                  </div>
-                </div>
-                <div class="info">
-                  <p class="text"> <a href="~/assets/spit-detail.html" target="_blank"> 面试说通过了要回去等offer，现在都两周了，还说在ceo审批，两天联系hr一次，都说还在等审批什么情况？工资什么的都谈好了，也要了工资证明。面试说通过了，要回去等offer，现在都两周了还说在ceo审批，两天联系hr一次，都说还在等审批，什么情况？？工资什么的都谈好了，也要了工资证明。也工资证明。 </a> </p>
-                  <div class="other">
-                    <div class="fl date">
-                      <span>2017-4-22 12:02</span>
-                    </div>
-                    <div class="fr remark">
-                      <a href="#" data-toggle="modal" data-target="#shareModal" class="share"><i class="fa fa-share-alt" aria-hidden="true"></i> 分享</a>
-                      <a href="#" data-toggle="modal" data-target="#remarkModal" class="comment"><i class="fa fa-commenting" aria-hidden="true"></i> 回复</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="clearfix"></div> </li>
-              <li class="qa-item">
-                <div class="fl record">
-                  <div class="number">
-                    <div class="border useful">
-                      <p class="usenum"><a href="#" class="zan"><i class="fa fa-thumbs-up " aria-hidden="true"></i></a></p>
-                      <p class="zannum"> 10 </p>
-                    </div>
-                    <div class="border answer">
-                      <a href="#" class="star"><i class="fa fa-star-o" aria-hidden="true"></i></a>
-                    </div>
-                  </div>
-                </div>
-                <div class="info">
-                  <p class="text"> <a href="~/assets/spit-detail.html" target="_blank"> 面试说通过了要回去等offer，现在都两周了，还说在ceo审批，两天联系hr一次。面试说通过了，要回去等offer，现在都两周了还说在ceo审批，两天联系hr一次，都说还在等审批，什么情况？？工资什么的都谈好了，也要了工资证明。也工资证明。 </a> </p>
-                  <div class="other">
-                    <div class="fl date">
-                      <span>2017-1-22 12:02</span>
-                    </div>
-                    <div class="fr remark">
-                      <a href="#" data-toggle="modal" data-target="#shareModal" class="share"><i class="fa fa-share-alt" aria-hidden="true"></i> 分享</a>
-                      <a href="#" data-toggle="modal" data-target="#remarkModal" class="comment"><i class="fa fa-commenting" aria-hidden="true"></i> 回复</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="clearfix"></div> </li>
-              <li class="qa-item">
-                <div class="fl record">
-                  <div class="number">
-                    <div class="border useful">
-                      <p class="usenum"><a href="#" class="zan"><i class="fa fa-thumbs-up " aria-hidden="true"></i></a></p>
-                      <p class="zannum"> 12 </p>
-                    </div>
-                    <div class="border answer">
-                      <a href="#" class="star"><i class="fa fa-star-o" aria-hidden="true"></i></a>
-                    </div>
-                  </div>
-                </div>
-                <div class="info">
-                  <p class="text"> <a href="~/assets/spit-detail.html" target="_blank"> 面试说通过了要回去等offer，现在都两周了，还说在ceo审批，两天联系hr一次，都说还在等审批什么情况？工资什么的都谈好了，也要了工资证明。面试说通过了，要回去等offer，现在都两周了还说在ceo审批，两天联系hr一次，都说还在等审批，什么情况？？工资什么的都谈好了，也要了工资证明。也工资证明。 </a> </p>
-                  <div class="other">
-                    <div class="fl date">
-                      <span>2017-6-22 12:02</span>
-                    </div>
-                    <div class="fr remark">
-                      <a href="#" data-toggle="modal" data-target="#shareModal" class="share"><i class="fa fa-share-alt" aria-hidden="true"></i> 分享</a>
-                      <a href="#" data-toggle="modal" data-target="#remarkModal" class="comment"><i class="fa fa-commenting" aria-hidden="true"></i> 回复</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="clearfix"></div> </li>
-              <li class="qa-item">
-                <div class="fl record">
-                  <div class="number">
-                    <div class="border useful">
-                      <p class="usenum"><a href="#" class="zan"><i class="fa fa-thumbs-up " aria-hidden="true"></i></a></p>
-                      <p class="zannum"> 10 </p>
-                    </div>
-                    <div class="border answer">
-                      <a href="#" class="star"><i class="fa fa-star-o" aria-hidden="true"></i></a>
-                    </div>
-                  </div>
-                </div>
-                <div class="info">
-                  <p class="text"> <a href="~/assets/spit-detail.html" target="_blank"> 面试说通过了要回去等offer，现在都两周了，还说在ceo审批，两天联系hr一次，都说还在等审批什么情况？工资什么的都谈好了，也要了工资证明。面试说通过了，要回去等offer，现在都两周了还说在ceo审批，两天联系hr一次，都说还在等审批，什么情况？？工资什么的都谈好了，也要了工资证明。也工资证明。 </a> </p>
-                  <div class="other">
-                    <div class="fl date">
-                      <span>2017-4-22 12:02</span>
-                    </div>
-                    <div class="fr remark">
-                      <a href="#" data-toggle="modal" data-target="#shareModal" class="share"><i class="fa fa-share-alt" aria-hidden="true"></i> 分享</a>
-                      <a href="#" data-toggle="modal" data-target="#remarkModal" class="comment"><i class="fa fa-commenting" aria-hidden="true"></i> 回复</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="clearfix"></div> </li>
-              <li class="qa-item">
-                <div class="fl record">
-                  <div class="number">
-                    <div class="border useful">
-                      <p class="usenum"><a href="#" class="zan"><i class="fa fa-thumbs-up " aria-hidden="true"></i></a></p>
-                      <p class="zannum"> 10 </p>
-                    </div>
-                    <div class="border answer">
-                      <a href="#" class="star"><i class="fa fa-star-o" aria-hidden="true"></i></a>
-                    </div>
-                  </div>
-                </div>
-                <div class="info">
-                  <p class="text"> <a href="~/assets/spit-detail.html" target="_blank"> 面试说通过了要回去等offer，现在都两周了，还说在ceo审批，两天联系hr一次。面试说通过了，要回去等offer，现在都两周了还说在ceo审批，两天联系hr一次，都说还在等审批，什么情况？？工资什么的都谈好了，也要了工资证明。也工资证明。 </a> </p>
-                  <div class="other">
-                    <div class="fl date">
-                      <span>2017-1-22 12:02</span>
+                      <span>{{item.publishTime}}</span>
                     </div>
                     <div class="fr remark">
                       <a href="#" data-toggle="modal" data-target="#shareModal" class="share"><i class="fa fa-share-alt" aria-hidden="true"></i> 分享</a>
@@ -208,26 +33,6 @@
             </ul>
           </div>
         </div>
-        <!-- <script>
-       $(function () {
-           $(".zan").click(function () {
-               $(this).children(".fa").toggleClass("color");
-               var c = parseInt($(this).parent().siblings(".zannum").html());
-               c = c++;
-           });
-           $(".star").click(function () {
-               console.log("eeee");
-               $(this).children(".fa").removeClass("fa-star-o").addClass("fa-star color");
-           });
-           $(".detail-list").unbind("scroll").bind("scroll", function (e) {
-               var sum = this.scrollHeight;
-               if (sum - 10 <= $(this).scrollTop() + $(this).height()) {
-                   $(".detail-list").append($("li").clone());
-               }
-           });
-       })
-
-   </script> -->
       </div>
       <div class="fl right-tag">
         <div class="block-btn">
@@ -242,7 +47,26 @@
 
 <script>
   import '~/assets/css/page-sj-spit-index.css'
+  import spitApi from '@/api/spit'
   export default {
+    data() {
+      return {
+        pageNo: 1
+      }
+    },
+    methods: {
+      loadMore() {
+        this.pageNo++
+        spitApi.search(this.pageNo, 10, {state: '1'}).then(res => {
+          this.items = this.items.concat(res.data.data.rows)
+        })
+      }
+    },
+    asyncData() {
+      return spitApi.search(1, 10, {state: '1'}).then(res => {
+        return {items: res.data.data.rows}
+      })
+    }
   }
 </script>
 
