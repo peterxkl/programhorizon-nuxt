@@ -100,6 +100,7 @@
               type: 'success'
             })
             this.pojo = {}
+            this.code = ''
           } else {
             this.$message({
               message: '注册出错',
