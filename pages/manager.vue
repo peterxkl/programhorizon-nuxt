@@ -68,7 +68,7 @@
             <router-link to="/manager/myfocus" active-class="active" tag="li" exact><a>我的关注</a></router-link>
             <router-link to="/manager/mycollect" active-class="active" tag="li" exact><a>我的收藏</a></router-link>
             <router-link to="/manager/myreaded" active-class="active" tag="li" exact><a>浏览记录</a></router-link>
-            <router-link to="/manager/myaccount" active-class="active" tag="li" exact><a>账户设置</a></router-link>
+            <router-link to="/manager/account" active-class="active" tag="li" exact><a>账户设置</a></router-link>
           </ul>
         </div>
       </div>

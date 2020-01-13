@@ -110,7 +110,7 @@
         })
       },
       login() {
-        return userApi.login().then(res => {
+        return userApi.login(this.mobile,this.password).then(res => {
           if (res.data.flag) {
             setUser(res.data.data.token, res.data.data.name, res.data.data.avatar)  //保存用户登录信息
             location.href='/manager'

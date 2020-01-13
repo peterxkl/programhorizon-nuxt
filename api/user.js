@@ -17,20 +17,14 @@ export default {
       data: user
     })
   },
-  login(username, password) {
+  login(mobile, password) {
     return request({
-      url: '/${apiGateWay}/${api_name}/login',
+      url: `/${apiGateWay}/${api_name}/login`,
       method: 'post',
       data: {
-        username,
+        mobile,
         password
       }
-    })
-  },
-  logout() {
-    return request({
-      url: '/${apiGateWay}/${api_name}/logout',
-      method: 'post'
     })
   }
 }
