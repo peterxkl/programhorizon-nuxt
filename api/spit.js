@@ -15,5 +15,11 @@ export default {
       url: `/${apiGateWay}/${api_name}/comment/${id}/${page}/${size}`,
       method: 'get'
     })
+  },
+  thumbup() {
+    return request({
+      url: `/${apiGateWay}/${api_name}/thumbup/${id}`,
+      method: 'put'
+    })
   }
 }

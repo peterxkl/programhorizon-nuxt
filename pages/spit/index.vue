@@ -9,7 +9,7 @@
                 <div class="fl record">
                   <div class="number">
                     <div class="border useful">
-                      <p class="usenum"><a href="#" class="zan"><i class="fa fa-thumbs-up " aria-hidden="true"></i></a></p>
+                      <p class="usenum" @click="thumbup(index)"><a href="#" class="zan"><i :class="'fa fa-thumbs-up'+item.zan " aria-hidden="true"></i></a></p>
                       <p class="zannum"> {{item.thumbup}} </p>
                     </div>
                     <div class="border answer">
@@ -48,6 +48,8 @@
 <script>
   import '~/assets/css/page-sj-spit-index.css'
   import spitApi from '@/api/spit'
+  import {getUser} from "../../utils/auth";
+
   export default {
     data() {
       return {
@@ -58,13 +60,47 @@
       loadMore() {
         this.pageNo++
         spitApi.search(this.pageNo, 10, {state: '1'}).then(res => {
-          this.items = this.items.concat(res.data.data.rows)
+          let tmp = res.data.data.rows.map(item => {
+            return {
+              ...item,    //注意此处的高级写法
+              zan: ''
+            }
+          })
+          this.items = this.items.concat(tmp)
+        })
+      },
+      thumbup(index) {
+        if (getUser().name === undefined) {
+          this.$message({
+            message: '必须登录才能点赞',
+            type: 'warning'
+          })
+          return
+        }
+        if (this.items[index].zan === 'color') {
+          this.$message({
+            message: '不能重复点赞',
+            type: 'warning'
+          })
+          return
+        }
+        this.items[index].zan = 'color'
+        spitApi.thumbup(this.items[index].id).then(res => {
+          if (res.data.flag) {
+            this.items[index].thumbup++
+          }
         })
       }
     },
     asyncData() {
       return spitApi.search(1, 10, {state: '1'}).then(res => {
-        return {items: res.data.data.rows}
+        let tmp = res.data.data.rows.map(item => {
+          return {
+            ...item,    //注意此处的高级写法
+            zan: ''
+          }
+        })
+        return {items: tmp}
       })
     }
   }
