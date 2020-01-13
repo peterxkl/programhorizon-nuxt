@@ -21,5 +21,12 @@ export default {
       url: `/${apiGateWay}/${api_name}/thumbup/${id}`,
       method: 'put'
     })
+  },
+  save(pojo) {
+    return request({
+      url: `/${apiGateWay}/${api_name}`,
+      method: 'post',
+      data: pojo
+    })
   }
 }
