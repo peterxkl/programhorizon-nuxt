@@ -1,43 +1,37 @@
 import request from '@/utils/request'
 
-export function login(username, password) {
-  return request({
-    url: '/user/user/login',
-    method: 'post',
-    data: {
-      username,
-      password
-    }
-  })
-}
+const apiGateWay = 'user'
+const api_name = 'user'
 
-export function getInfo(token) {
-  return request({
-    url: '/user/info',
-    method: 'get',
-    params: { token }
-  })
-}
-
-export function logout() {
-  return request({
-    url: '/user/logout',
-    method: 'post'
-  })
-}
-
-export function sendSms(mobile) {
-  return request({
-    url: `/user/user/sendsms/+${mobile}`,
-    method: 'get'
-  })
-}
-
-export function register(user, code) {
-  return request({
-    url: `/user/user/register/+${code}`,
-    method: 'post',
-    data: user
-  })
+export default {
+  sendSms(mobile) {
+    return request({
+      url: `/${apiGateWay}/${api_name}/sendsms/${mobile}`,
+      method: 'get'
+    })
+  },
+  register(user, code) {
+    return request({
+      url: `/${apiGateWay}/${api_name}/register/${code}`,
+      method: 'post',
+      data: user
+    })
+  },
+  login(username, password) {
+    return request({
+      url: '/${apiGateWay}/${api_name}/login',
+      method: 'post',
+      data: {
+        username,
+        password
+      }
+    })
+  },
+  logout() {
+    return request({
+      url: '/${apiGateWay}/${api_name}/logout',
+      method: 'post'
+    })
+  }
 }
 
