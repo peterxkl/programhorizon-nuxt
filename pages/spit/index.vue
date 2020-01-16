@@ -53,7 +53,19 @@
   export default {
     data() {
       return {
-        pageNo: 1
+        pageNo: 1,
+        dialogVisible: false,
+        content: '',
+        editorOption: {
+          modules: {
+            toolbar: [
+              [{'size': ['small', false, 'large']}],
+              ['bold', 'italic'],
+              [{'list': 'ordered'},  {'list': 'bullet'}],
+              ['link','image']
+            ]
+          }
+        }
       }
     },
     methods: {
@@ -90,7 +102,11 @@
             this.items[index].thumbup++
           }
         })
-      }
+      },
+      onEditorChange({editor, html, text}) {
+        console.log('editor change', editor, html, text)
+        this.content = html
+      },
     },
     asyncData() {
       return spitApi.search(1, 10, {state: '1'}).then(res => {

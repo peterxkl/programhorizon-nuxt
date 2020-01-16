@@ -1,4 +1,4 @@
-<template>
+<template xmlns:v-quill="http://www.w3.org/1999/xhtml">
   <div class="wrapper tc-detail">
     <div class="fl left-list">
       <div class="tc-detail">
@@ -15,7 +15,7 @@
             <ul>
               <li><span class="star"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> {{item.thumbup}}</span></li>
               <li><a href="#" data-toggle="modal" data-target="#shareModal"><i class="fa fa-share-alt" aria-hidden="true"></i> {{item.share}}</a></li>
-              <li><a data-toggle="modal" data-target="#remarkModal"><i class="fa fa-commenting" aria-hidden="true"></i> {{item.comment}}</a></li>
+              <li><a data-toggle="modal" data-target="#remarkModal" @click="dialogVisible=true;content=''"><i class="fa fa-commenting" aria-hidden="true"></i> {{item.comment}}</a></li>
             </ul>
           </div>
         </div>
@@ -40,6 +40,21 @@
               </div> </li>
           </ul>
         </div>
+
+        <el-dialog
+          title="评论"
+          :visible.sync="dialogVisible"
+          width="40%">
+          <div class="quill-editor"
+               :content="content"
+               @change="onEditorChange($event)"
+               v-quill:myQuillEditor="editorOption">
+          </div>
+          <span slot="footer" class="dialog-footer">
+            <el-button @click="dialogVisible=false">取消</el-button>
+            <el-button @click="dialogVisible = false;save" type="primary">确定</el-button>
+          </span>
+        </el-dialog>
       </div>
     </div>
     <div class="fl right-tag">
@@ -59,7 +74,8 @@
   export default {
     data() {
       return {
-        pageNo: 1
+        pageNo: 1,
+        dialogVisible: false
       }
     },
     methods: {
@@ -67,6 +83,20 @@
         this.pageNo++
         spitApi.search(this.pageNo, 10, {state: '1'}).then(res => {
           this.items = this.items.concat(res.data.data.rows)
+        })
+      },
+      save() {
+        spitApi.save({content: this.content,parentId: this.item.id}).then(res => {
+          this.$message({
+            message: res.data.message,
+            type: (res.data.flag ? 'success' : 'error')
+          })
+          if (res.data.flag) {
+            this.dialogVisible = false
+            spitApi.commentList(this.item.id, 1, 10).then(res => {
+              this.commentList = res.data.data.rows  //todo
+            })
+          }
         })
       }
     },
@@ -84,5 +114,9 @@
 </script>
 
 <style scoped>
-
+  .quill-editor {
+    min-height: 200px;
+    max-height: 400px;
+    overflow-y: auto;
+  }
 </style>
