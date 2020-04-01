@@ -25,7 +25,8 @@
                   </div>
                   <div class="clearfix"></div>
                 </div>
-              </div> </li>
+              </div>
+            </li>
           </ul>
         </div>
       </div>
@@ -60,5 +61,8 @@
 </script>
 
 <style scoped>
-
+.activity-list{
+  height: 100vh;
+  overflow-y: auto;
+}
 </style>
